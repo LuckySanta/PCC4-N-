@@ -1,0 +1,15 @@
+Using footprints from: http://www.luciani.org/geda/pcb/pcb-footprint-list.html
+$ gsch2pcb --use-files --elements-dir ~/Desktop/footprints PCC4\[N\].sch
+
+The NPN transistor's pins in gschem are labeled with letters but PCB wants
+numbers. The transistors I'm using are KSP2222A from Fairchild which have the
+TO-92 (Transistor Outline...) footprint and it's pins are 1:E, 2:B & 3:C.
+I have to regex the Netlist file to replace the pin letters with the correct
+numbers. In Vim...
+%s/E /1 /g
+%s/B /2 /g
+%s/C /3 /g
+
+Then save it before loading it in `pcb`.
+
+
